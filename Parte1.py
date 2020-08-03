@@ -13,6 +13,7 @@ def toBinary(msj):
     print("Mensaje: "+msj)
     msj = ' '.join(format(ord(x), 'b') for x in msj)
     msj = msj.replace(" ", "0")
+    msj = "0"+msj
     print("Mensaje Binario: "+ msj)
     return msj
 
