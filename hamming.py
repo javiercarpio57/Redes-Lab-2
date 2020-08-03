@@ -58,7 +58,7 @@ def CodificarHamming(palabra):
     arr = CalcularParidadBits(arr, r) 
 
     return arr
-    
+
 def DecodificarHamming(palabra):
     largoOriginal = len(palabra)
     cont = math.floor(math.log2(len(palabra)))
@@ -73,12 +73,11 @@ def DecodificarHamming(palabra):
     return palabra
 
 
-
 data = '1011001'
 codeHamming = CodificarHamming(data)
-  
 print("Data en HAMMING es\t" + codeHamming)  
-    
+
+
 arr = '10111001110'
 r = CalcularBitsRedundantes(len(arr) - math.ceil(math.log2(len(arr))))
 print("Error Data is\t\t" + arr) 
@@ -88,7 +87,6 @@ print("Posicion del error " + str(correction))
 
 corregido = Corregir(arr, correction)
 print("CORREGIDO:\t\t" + str(corregido))
-
 print('REAL:\t', data)
 
 limpio = DecodificarHamming(corregido)
