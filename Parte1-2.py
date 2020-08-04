@@ -38,6 +38,7 @@ else:
     print("cadena mala")
     data = string[:-8]
     codeHamming = check.CodificarHamming(data)
+    r = CalcularBitsRedundantes(len(codeHamming) - math.ceil(math.log2(len(codeHamming))))
     
 
 
