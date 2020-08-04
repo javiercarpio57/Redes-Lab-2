@@ -5,7 +5,9 @@
 # Receptor
 
 # Librerias para uso de sockets y serializacion
-import socket, pickle   
+import socket, pickle
+from bitarray import bitarray
+import fletcher_checksum as check
 
 # Host y puerto
 host = 'local host'
@@ -25,6 +27,19 @@ while msg:
     data_variable = pickle.loads(msg)
     print("Recibiendo objeto: ",data_variable)
     msg = s.recv(1024) 
+
+string = data_variable.to01()
+print(string)
+
+groups = [string[i:i+8] for i in range(0, len(string), 8)]
+if( check.check_checksum(groups)):
+    print("cadena buena")
+else:
+    print("cadena mala")
+    data = string[:-8]
+    codeHamming = check.CodificarHamming(data)
+    
+
 
 # Cerrar conexion
 s.close() 

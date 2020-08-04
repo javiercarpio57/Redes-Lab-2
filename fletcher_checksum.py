@@ -62,13 +62,6 @@ def check_checksum(binaries_list):
     else:
         return False
 
-palabra = '10110011101010110101101011010101'
-groups = [palabra[i:i+8] for i in range(0, len(palabra), 8)]
-# print(groups)
 
-checksum = create_checksum(groups)
-print(checksum)
-groups.append(checksum)
 
-print(check_checksum(groups))
 
