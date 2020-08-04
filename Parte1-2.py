@@ -9,7 +9,7 @@ import socket, pickle
 
 # Host y puerto
 host = 'local host'
-port = 5004
+port = 5003
    
 # Creacion de socket y conexion
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
