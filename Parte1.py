@@ -9,6 +9,7 @@ import socket, pickle
 from bitarray import bitarray
 import random
 import fletcher_checksum as check
+import hamming as hamming
 
 # Metodo para convertir de String a Binario
 def toBinary(msj):
@@ -37,15 +38,20 @@ print("Se tendra una probabilidad de ", int(prop)/100, " de tener ruido en cada 
 
 # Conversion
 es = toBinary(msj)
-print("binario ",es)
 
 groups = [es[i:i+8] for i in range(0, len(es), 8)]
 checksum = check.create_checksum(groups)
 
-print("EL checksum ",checksum)
-
-ba = bitarray(es)
 checkBa = bitarray(checksum)
+
+groups = [es[i:i+8] for i in range(0, len(es), 8)]
+codeHammingGroup = []
+
+for group in groups:
+    codeHammingGroup.append(hamming.CodificarHamming(group))
+
+es = ''.join(codeHammingGroup)
+ba = bitarray(es)
 
 print("El bitArray antes de ruido ", ba)
 
@@ -75,7 +81,7 @@ else:
 
 print("el ba despues de ruido ", ba)
 print("el checksum en bitarray ", checkBa)
-ba = ba+checkBa
+ba = ba + checkBa
 print("Bitarray con checksum ", ba)
 #Serializacion
 

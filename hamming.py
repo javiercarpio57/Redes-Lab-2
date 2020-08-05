@@ -54,7 +54,7 @@ def Corregir(palabra, posicion):
 def CodificarHamming(palabra):
     m = len(palabra) 
     r = CalcularBitsRedundantes(m)
-    arr = PosicionBitsRedundantes(data, r) 
+    arr = PosicionBitsRedundantes(palabra, r) 
     arr = CalcularParidadBits(arr, r) 
 
     return arr
@@ -73,21 +73,22 @@ def DecodificarHamming(palabra):
     return palabra
 
 
-data = '1011001'
-codeHamming = CodificarHamming(data)
-print("Data en HAMMING es\t" + codeHamming)  
+# data = '01101000'
+# codeHamming = CodificarHamming(data)
+# print("Data en HAMMING es\t" + codeHamming)  
 
 
-arr = '10111001110'
-r = CalcularBitsRedundantes(len(arr) - math.ceil(math.log2(len(arr))))
-print("Error Data is\t\t" + arr) 
+# arr = '011001001110'
+# r = CalcularBitsRedundantes(len(arr) - math.ceil(math.log2(len(arr))))
+# print(r)
+# print("Error Data is\t\t" + arr) 
 
-correction = EncontrarError(arr, r) 
-print("Posicion del error " + str(correction)) 
+# correction = EncontrarError(arr, r) 
+# print("Posicion del error " + str(correction)) 
 
-corregido = Corregir(arr, correction)
-print("CORREGIDO:\t\t" + str(corregido))
-print('REAL:\t', data)
+# corregido = Corregir(arr, correction)
+# print("CORREGIDO:\t\t" + str(corregido))
+# print('REAL:\t', data)
 
-limpio = DecodificarHamming(corregido)
-print('DECODE:\t', limpio)
+# limpio = DecodificarHamming(corregido)
+# print('DECODE:\t', limpio)
